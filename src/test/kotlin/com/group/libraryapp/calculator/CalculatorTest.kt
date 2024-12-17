@@ -6,6 +6,8 @@ fun main() {
     calculatorTest.addTest()
     calculatorTest.minusTest()
     calculatorTest.multiplyTest()
+    calculatorTest.divTest()
+    calculatorTest.divExceptionTest()
 }
 
 class CalculatorTest {
@@ -13,13 +15,12 @@ class CalculatorTest {
     fun addTest() {
         // given
         val calculator = Calculator(5)
-        calculator.add(3)
 
         // when
-        val expectedCalculator = Calculator(8)
+        calculator.add(3)
 
         // then
-        if (calculator != expectedCalculator) {
+        if (calculator.number != 8) {
             throw IllegalStateException()
         }
     }
@@ -27,13 +28,12 @@ class CalculatorTest {
     fun minusTest() {
         // given
         val calculator = Calculator(5)
-        calculator.minus(3)
 
         // when
-        val expectedCalculator = Calculator(2)
+        calculator.minus(3)
 
         // then
-        if (calculator != expectedCalculator) {
+        if (calculator.number != 2) {
             throw IllegalStateException()
         }
     }
@@ -41,15 +41,48 @@ class CalculatorTest {
     fun multiplyTest() {
         // given
         val calculator = Calculator(5)
-        calculator.multiply(3)
 
         // when
-        val expectedCalculator = Calculator(15)
+        calculator.multiply(3)
 
         // then
-        if (calculator != expectedCalculator) {
+        if (calculator.number != 15) {
             throw IllegalStateException()
         }
+    }
+
+    fun divTest() {
+        // given
+        val calculator = Calculator(5)
+
+        // when
+        calculator.divide(2)
+
+        // then
+        if (calculator.number != 2) {
+            throw IllegalStateException()
+        }
+    }
+
+
+    fun divExceptionTest() {
+        // given
+        val calculator = Calculator(5)
+
+        // when
+        try {
+            calculator.divide(0)
+        } catch (e: IllegalArgumentException) {
+            if (e.message != "Division by zero") {
+                throw IllegalStateException("메시지가 다름")
+            }
+            // 테스트 성공
+            return
+        } catch (e: Exception) {
+            throw IllegalStateException()
+        }
+
+        throw IllegalStateException("예상하는 예외가 발생하지 않음")
     }
 
 }

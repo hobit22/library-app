@@ -1,7 +1,7 @@
 package com.group.libraryapp.calculator
 
-data class Calculator ( // TODO data class 특징
-    private var number: Int
+class Calculator ( // TODO data class 특징
+    var number: Int
 ) {
     // TODO Backing Properties
 
