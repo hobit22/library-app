@@ -4,7 +4,7 @@ import com.group.libraryapp.domain.book.Book
 import com.group.libraryapp.domain.book.BookRepository
 import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
-import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory
+import com.group.libraryapp.domain.user.loanhistory.JavaUserLoanHistory
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.HttpStatus
 
 @SpringBootTest
 class BookServiceTest @Autowired constructor(
@@ -74,7 +73,13 @@ class BookServiceTest @Autowired constructor(
         // given
         bookRepository.save(Book("책이름"))
         val savedUser = userRepository.save(User("사람이름", null))
-        userLoanHistoryRepository.save(UserLoanHistory(savedUser, "책이름", false))
+        userLoanHistoryRepository.save(
+            JavaUserLoanHistory(
+                savedUser,
+                "책이름",
+                false
+            )
+        )
         val request = BookLoanRequest("사람이름", "책이름")
 
         // when & then
@@ -89,7 +94,13 @@ class BookServiceTest @Autowired constructor(
         // given
         bookRepository.save(Book("책이름"))
         val savedUser = userRepository.save(User("사람이름", null))
-        userLoanHistoryRepository.save(UserLoanHistory(savedUser, "책이름", false))
+        userLoanHistoryRepository.save(
+            JavaUserLoanHistory(
+                savedUser,
+                "책이름",
+                false
+            )
+        )
         val request = BookReturnRequest("사람이름", "책이름")
 
         // when
