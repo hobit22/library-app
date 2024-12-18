@@ -4,7 +4,7 @@ import com.group.libraryapp.domain.book.Book
 import com.group.libraryapp.domain.book.BookRepository
 import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
-import com.group.libraryapp.domain.user.loanhistory.JavaUserLoanHistory
+import com.group.libraryapp.domain.user.loanHistory.UserLoanHistory
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistoryRepository
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
@@ -74,7 +74,7 @@ class BookServiceTest @Autowired constructor(
         bookRepository.save(Book("책이름"))
         val savedUser = userRepository.save(User("사람이름", null))
         userLoanHistoryRepository.save(
-            JavaUserLoanHistory(
+            UserLoanHistory(
                 savedUser,
                 "책이름",
                 false
@@ -95,7 +95,7 @@ class BookServiceTest @Autowired constructor(
         bookRepository.save(Book("책이름"))
         val savedUser = userRepository.save(User("사람이름", null))
         userLoanHistoryRepository.save(
-            JavaUserLoanHistory(
+            UserLoanHistory(
                 savedUser,
                 "책이름",
                 false
