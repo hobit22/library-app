@@ -23,10 +23,10 @@ class BookServiceTest @Autowired constructor(
     private val bookRepository: BookRepository,
     private val userRepository: UserRepository,
     private val userLoanHistoryRepository: UserLoanHistoryRepository,
-){
+) {
 
     @AfterEach
-    fun afterEach(){
+    fun afterEach() {
         userLoanHistoryRepository.deleteAllInBatch()
         bookRepository.deleteAllInBatch()
         userRepository.deleteAllInBatch()
