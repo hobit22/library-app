@@ -36,8 +36,7 @@ class UserService(
 
     @Transactional
     fun deleteUser(name: String) {
-        val user = userRepository.findByName(name)
-            .orElseThrow(::IllegalArgumentException)
+        val user = userRepository.findByName(name) ?: throw IllegalArgumentException() // 엘비스 연산자로 null 분기
         userRepository.delete(user)
     }
 
