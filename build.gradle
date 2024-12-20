@@ -19,9 +19,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.6.21' // 코틀린에서 리플렉션을 사용하기 위한
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin' // 코틀린에서 json 파싱을 위한
+
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.6.21' // 코틀린에서 리플렉션을 사용하기 위한
 }
 
 tasks.named('test') {
